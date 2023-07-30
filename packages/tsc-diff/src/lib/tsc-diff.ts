@@ -6,6 +6,7 @@ export interface TscDiffConfig {
   files?: string[]
   upstream?: boolean // upstream changes (will not work with staged)
   upstreamRemoteName?: string // optional but useful to provide if you do not want to use the "origin" remote
+  skipCleanUp: boolean // allows skipping delete action
 }
 
 interface ErrorObject { type:string; message: string }
@@ -71,7 +72,7 @@ const getUpstreamFiles = (remoteName = 'origin') => {
 
   const remoteBranch = `${remoteName}/${branchName}`
 
-  execSync(`git fetch ${remoteBranch}`,shellConfig)
+  execSync(`git fetch ${remoteName}`,shellConfig)
   const filesDiff = execSync(`git diff --name-only ${remoteBranch}`, shellConfig)
 
   return parseFiles(filesDiff)
