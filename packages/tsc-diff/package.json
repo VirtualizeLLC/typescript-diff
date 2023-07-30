@@ -5,7 +5,8 @@
   "type": "commonjs",
   "bin": "packages/tsc-diff/src/lib/cli.js",
   "dependencies": {
-    "commander": "*"
+    "commander": "^11.0.0",
+    "tslib": "^2.3.0"
   },
   "peerDependencies": {
     "typescript": ">=3.0.0"

@@ -14,6 +14,11 @@ enum ErrorTypes {
   INVALID_CONFIG='Invalid Configuration'
 }
 
+/**
+ * @placeholder for removal process for tsconfig<diff>.json
+ */
+export const removeTsconfigDiff = () => {}
+
 export const validateConfig = (config: TscDiffConfig) => {
   const errors: ErrorObject[] = []
   if (config.staged && config.upstream){
@@ -29,17 +34,33 @@ export const validateConfig = (config: TscDiffConfig) => {
 }
 
 
-const shellConfig: ExecSyncOptions = { stdio: 'pipe', maxBuffer: 60*1024**2 }
+const shellConfig: ExecSyncOptions = { stdio: 'pipe', encoding: 'utf-8', maxBuffer: 60*1024**2 }
 
-export const getStagedFiles = () => {
-  const files = execSync('git diff --staged', shellConfig)
+/**
+ *
+ * @param files
+ * @returns
+ * @todo possibly leverage simple git
+ */
+const parseFiles = (files: string | Buffer) => {
+  if (typeof files !== 'string'){
+    throw new Error('files is not outputing a string')
+  }
 
   if (!files || !files){
     console.error('files do not exist')
     return []
   }
 
-  return files
+  return files.split("\n").filter(val => val !== '')
+}
+
+/**
+ * @description does a quick git diff to see the changed files
+ */
+export const getStagedFiles = () => {
+  const files = execSync('git diff --staged --name-only', shellConfig)
+  return parseFiles(files)
 }
 
 /**
@@ -53,7 +74,7 @@ const getUpstreamFiles = (remoteName = 'origin') => {
   execSync(`git fetch ${remoteBranch}`,shellConfig)
   const filesDiff = execSync(`git diff --name-only ${remoteBranch}`, shellConfig)
 
-  return filesDiff
+  return parseFiles(filesDiff)
 }
 
 export const tscDiff = (config: TscDiffConfig) => {
@@ -62,11 +83,13 @@ export const tscDiff = (config: TscDiffConfig) => {
   const files = []
 
   if (config.staged && !config.upstream){
-    files.push(getStagedFiles())
+    files.push(...getStagedFiles())
   }
   if (config.upstream && !config.staged){
-    files.push(getUpstreamFiles(config.upstreamRemoteName))
+    files.push(...getUpstreamFiles(config.upstreamRemoteName))
   }
+
+  console.log('files diff', files)
 
   return files
 }
