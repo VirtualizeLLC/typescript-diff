@@ -7,7 +7,9 @@
   "contributors": [
     "Frederick Engelhardt"
   ],
-  "scripts": {},
+  "scripts": {
+    "build:prod": "nx run tsc-diff:build"
+  },
   "private": false,
   "engines": {
     "node": ">=20.0"

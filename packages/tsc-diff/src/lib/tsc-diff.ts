@@ -1,12 +1,13 @@
-import { ExecSyncOptions, exec, execSync } from "child_process";
+import { ExecSyncOptions, execSync } from "child_process";
 
 
 export interface TscDiffConfig {
   staged?: boolean // staged changes only (will not work with upstream)
   files?: string[]
   upstream?: boolean // upstream changes (will not work with staged)
-  upstreamRemoteName?: string // optional but useful to provide if you do not want to use the "origin" remote
-  skipCleanUp: boolean // allows skipping delete action
+  remoteName?: string // optional but useful to provide if you do not want to use the "origin" remote
+  skipCleanUp?: boolean // allows skipping delete action
+  verbose?: boolean
 }
 
 interface ErrorObject { type:string; message: string }
@@ -87,10 +88,8 @@ export const tscDiff = (config: TscDiffConfig) => {
     files.push(...getStagedFiles())
   }
   if (config.upstream && !config.staged){
-    files.push(...getUpstreamFiles(config.upstreamRemoteName))
+    files.push(...getUpstreamFiles(config.remoteName))
   }
-
-  console.log('files diff', files)
 
   return files
 }
