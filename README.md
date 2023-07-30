@@ -10,7 +10,7 @@
 
 ## Features
 
-This monorepo encompasses 1 utility `@vllc/tsc-diff` which is used to run eslint and jest. There are two packages specific to eslint and jest to make running pre-commit and pre-push hooks easier. `@vllc/tsc-diff` also fully supports being run in isolatation and piping changes to custom test runners.
+This monorepo encompasses 1 utility `@vllc/tsc-diff` which is used to run eslint and jest. There are two packages specific to [eslint](https://eslint.org/) and [jest](https://jestjs.io/) to make running pre-commit and pre-push hooks easier. `@vllc/tsc-diff` also fully supports being run in isolatation and piping changes to custom test runners.
 
 If you have a tool/test-runner that you think needs to be supported please file an issue and consider contributing to add support for this tool.
 
@@ -20,6 +20,12 @@ If you have a tool/test-runner that you think needs to be supported please file 
 - [@vllc/tsc-diff-jest](./packages/tsc-diff) - jest support
   - Adds a compatibility script to directly mutate the tsconfig.json file (with backups) for babel-jest, which may work well with esbuild and swc-jest
   - Adds wrapper around jest so it runs `ts-jest` with the staged tsconfig file.
+
+## Compatibility
+
+- `@vllc/ts-diff`: Node 12.x.x - 20.x.x
+- `@vllc/ts-diff-eslint`: Eslint >=6 (using 8.x.x - locally)
+- `@vllc/ts-diff-jest`: Jest >=22 (using 29 - locally)
 
 ## Getting started
 

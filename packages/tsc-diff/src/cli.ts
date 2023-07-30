@@ -1,6 +1,6 @@
 import { Command } from 'commander'
-import packageJson from '../../package.json'
-import { TscDiffConfig, removeTsconfigDiff, tscDiff } from './tsc-diff'
+import packageJson from '../package.json'
+import { TscDiffConfig, removeTsconfigDiff, tscDiff } from './lib/tsc-diff'
 
 const program = new Command()
 

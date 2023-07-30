@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx ts-node $(dirname "$0")/../packages/tsc-diff/src/cli.ts
