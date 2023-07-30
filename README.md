@@ -15,19 +15,7 @@ Inspired by [node-module-boilerplate](https://github.com/sindresorhus/node-modul
 
 ## Getting started
 
-### Add NPM Token
-
-Add your npm token to your GitHub repository secrets as `NPM_TOKEN`.
-
-### Add Codecov integration
-
-Enable the Codecov GitHub App [here](https://github.com/apps/codecov).
-
-**Remove everything from here and above**
-
----
-
-# my-package-name
+# typescript-utils monorepo
 
 [![npm package][npm-img]][npm-url]
 [![Build Status][build-img]][build-url]
@@ -48,9 +36,9 @@ npm install my-package-name
 ## Usage
 
 ```ts
-import { myPackage } from 'my-package-name';
+import { myPackage } from 'my-package-name'
 
-myPackage('hello');
+myPackage('hello')
 //=> 'hello from my package'
 ```
 
