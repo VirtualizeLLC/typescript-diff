@@ -22,9 +22,9 @@
     "jest"
   ],
   "bugs": {
-    "url": "https://github.com/VirtualizeLLC/typescript-staged/issues"
+    "url": "https://github.com/VirtualizeLLC/typescript-utils/issues"
   },
-  "homepage": "https://github.com/VirtualizeLLC/typescript-staged#readme",
+  "homepage": "https://github.com/VirtualizeLLC/typescript-utils#README",
   "dependencies": {
     "commander": "^11.0.0",
     "tslib": "^2.3.0"
