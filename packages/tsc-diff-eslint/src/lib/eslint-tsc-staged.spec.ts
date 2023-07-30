@@ -1,7 +1,7 @@
-import { eslintTscStaged } from './eslint-tsc-staged';
+import { eslintTscStaged } from './eslint-tsc-diff'
 
 describe('eslintTscStaged', () => {
   it('should work', () => {
-    expect(eslintTscStaged()).toEqual('eslint-tsc-staged');
-  });
-});
+    expect(eslintTscStaged()).toEqual('eslint-tsc-diff')
+  })
+})

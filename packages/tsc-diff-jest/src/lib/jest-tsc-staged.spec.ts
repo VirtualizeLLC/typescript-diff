@@ -1,7 +1,7 @@
-import { jestTscStaged } from './jest-tsc-staged';
+import { jestTscStaged } from './jest-tsc-diff'
 
 describe('jestTscStaged', () => {
   it('should work', () => {
-    expect(jestTscStaged()).toEqual('jest-tsc-staged');
-  });
-});
+    expect(jestTscStaged()).toEqual('jest-tsc-diff')
+  })
+})

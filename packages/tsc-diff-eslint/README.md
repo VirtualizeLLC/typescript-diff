@@ -1,11 +1,11 @@
-# eslint-tsc-staged
+# eslint-tsc-diff
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Building
 
-Run `nx build eslint-tsc-staged` to build the library.
+Run `nx build eslint-tsc-diff` to build the library.
 
 ## Running unit tests
 
-Run `nx test eslint-tsc-staged` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test eslint-tsc-diff` to execute the unit tests via [Jest](https://jestjs.io).

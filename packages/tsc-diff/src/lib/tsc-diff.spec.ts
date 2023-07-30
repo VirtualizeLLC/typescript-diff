@@ -4,6 +4,6 @@
 
 describe('tscStaged', () => {
   it('should work', () => {
-    // expect(tscDiff()).toEqual('tsc-staged');
-  });
-});
+    // expect(tscDiff()).toEqual('tsc-diff');
+  })
+})

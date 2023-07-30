@@ -1,1 +1,1 @@
-export * from './lib/jest-tsc-staged';
+export * from './lib/jest-tsc-diff'

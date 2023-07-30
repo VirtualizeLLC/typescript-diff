@@ -1,5 +1,5 @@
 {
-  "name": "@vllc/tsc-staged-jest",
+  "name": "@vllc/tsc-diff-jest",
   "version": "0.0.1",
   "type": "commonjs"
 }

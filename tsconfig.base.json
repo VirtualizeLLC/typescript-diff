@@ -15,10 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@vllc/eslint-tsc-staged": ["packages/eslint-tsc-staged/src/index.ts"],
-      "@vllc/jest-tsc-staged": ["packages/jest-tsc-staged/src/index.ts"],
+      "@vllc/eslint-tsc-diff": ["packages/eslint-tsc-diff/src/index.ts"],
+      "@vllc/jest-tsc-diff": ["packages/jest-tsc-diff/src/index.ts"],
       "@vllc/mylib": ["packages/mylib/src/index.ts"],
-      "@vllc/tsc-staged": ["packages/tsc-staged/src/index.ts"]
+      "@vllc/tsc-diff": ["packages/tsc-diff/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

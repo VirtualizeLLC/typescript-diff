@@ -11,7 +11,7 @@ Running `tsc` on all files can take extreme amounts of time with mid - monorepo 
 
 ## Q&A
 
-Q: Why is tsc-staged running on File X when I only changed File Y?
+Q: Why is tsc-diff running on File X when I only changed File Y?
 A: Most likely because FileY is included in your dependency chain. You can run something like `npx dpdm ./path/to/fileY` and it will list all the files imported by the File. Your file should be there.
 
 ## Args
@@ -25,8 +25,8 @@ This section will be auto-generated in upcoming releases.
 
 ## Building
 
-Run `nx build tsc-staged` to build the library.
+Run `nx build tsc-diff` to build the library.
 
 ## Running unit tests
 
-Run `nx test tsc-staged` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test tsc-diff` to execute the unit tests via [Jest](https://jestjs.io).

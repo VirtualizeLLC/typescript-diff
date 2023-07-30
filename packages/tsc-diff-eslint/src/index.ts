@@ -1,1 +1,1 @@
-export * from './lib/eslint-tsc-staged';
+export * from './lib/eslint-tsc-diff'

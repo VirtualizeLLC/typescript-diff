@@ -1,3 +1,3 @@
 export function eslintTscStaged(): string {
-  return 'eslint-tsc-staged';
+  return 'eslint-tsc-diff'
 }

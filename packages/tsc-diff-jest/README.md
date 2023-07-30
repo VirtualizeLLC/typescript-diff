@@ -1,11 +1,11 @@
-# jest-tsc-staged
+# jest-tsc-diff
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Building
 
-Run `nx build jest-tsc-staged` to build the library.
+Run `nx build jest-tsc-diff` to build the library.
 
 ## Running unit tests
 
-Run `nx test jest-tsc-staged` to execute the unit tests via [Jest](https://jestjs.io).
+Run `nx test jest-tsc-diff` to execute the unit tests via [Jest](https://jestjs.io).
