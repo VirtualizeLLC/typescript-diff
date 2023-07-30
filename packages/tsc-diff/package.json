@@ -1,0 +1,16 @@
+{
+  "name": "tsc-diff",
+  "version": "0.0.1",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": "packages/tsc-diff/src/lib/cli.js",
+  "dependencies": {
+    "commander": "*"
+  },
+  "peerDependencies": {
+    "typescript": ">=3.0.0"
+  },
+  "devDependencies": {
+    "typescript": "*"
+  }
+}
