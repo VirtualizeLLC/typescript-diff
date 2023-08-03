@@ -5,7 +5,7 @@ import { readConfigFile } from '../lib/helpers/configReader'
 
 const testConfigFileDir = resolve(__dirname, './eslintConfigFiles')
 
-describe('@vllc/tscd-eslint-runner', () => {
+describe('@vllc/eslint-tsc-diff', () => {
   describe('readConfigFile()', () => {
     it('reads .eslintrc.(yaml|yml) files', () => {
       expect(

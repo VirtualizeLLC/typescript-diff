@@ -1,8 +1,8 @@
 {
-  "name": "@vllc/tscd-eslint-runner",
-  "version": "0.0.1",
+  "name": "@vllc/eslint-tsc-diff",
+  "version": "0.0.1-beta",
   "dependencies": {
-    "@vllc/tsc-diff": "workspace:0.0.1",
+    "@vllc/tsc-diff": "workspace:0.0.1-beta",
     "commander": "^11.0.0",
     "js-yaml": "^4.1.0"
   },

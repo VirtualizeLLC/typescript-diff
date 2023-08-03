@@ -9,7 +9,7 @@ const writeYamlEslintTestFiles = () => {
   fs.writeFileSync(
     resolve(
       __dirname,
-      '../packages/tscd-eslint-runner/src/__test__/eslintConfigFiles/.eslintrc.yaml',
+      '../packages/eslint-tsc-diff/src/__test__/eslintConfigFiles/.eslintrc.yaml',
     ),
     doc.toString(),
     { encoding: 'utf-8', flag: 'w' },
@@ -18,7 +18,7 @@ const writeYamlEslintTestFiles = () => {
   fs.writeFileSync(
     resolve(
       __dirname,
-      '../packages/tscd-eslint-runner/src/__test__/eslintConfigFiles/.eslintrc.yml',
+      '../packages/eslint-tsc-diff/src/__test__/eslintConfigFiles/.eslintrc.yml',
     ),
     doc.toString(),
     { encoding: 'utf-8', flag: 'w' },

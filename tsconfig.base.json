@@ -19,7 +19,7 @@
     "baseUrl": ".",
     "paths": {
       "@vllc/tsc-diff": ["packages/tsc-diff/src/index.ts"],
-      "@vllc/tscd-eslint-runner": ["packages/tscd-eslint-runner/src/index.ts"],
+      "@vllc/eslint-tsc-diff": ["packages/eslint-tsc-diff/src/index.ts"],
       "@vllc/typescript-utils/*": ["./*"]
     }
   },

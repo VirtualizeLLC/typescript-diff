@@ -1,8 +1,9 @@
 import { load as ymlLoad } from 'js-yaml'
-import { readFileSync } from 'fs'
+import { readFileSync, writeFileSync } from 'fs'
 import { ESLint } from 'eslint'
 
 import { TSCDiffEslintConfig } from '../types'
+import { resolve } from 'path'
 
 const jsConfigPattern = '.eslintrc.(cjs|js)$'
 
@@ -21,7 +22,7 @@ export const readConfigFile = (filePath: string): ESLint.ConfigData => {
 
   if (!file && !filePath.match(jsConfigPattern)) {
     throw new Error(
-      `@vllc/tscd-eslint-runner error, provided file path invalid, ${filePath}`,
+      `@vllc/eslint-tsc-diff error, provided file path invalid, ${filePath}`,
     )
   }
 
@@ -90,9 +91,24 @@ export const generateTempEslintConfigFile = (config: TSCDiffEslintConfig) => {
     overrides,
   }
 
+  if (config.noInlineConfig !== undefined) {
+    eslintConfig.noInlineConfig = config.noInlineConfig
+  }
+
   if (eslintConfig.overrides) {
     config.verbose
   }
+
+  if (config.dryRun) {
+    return eslintConfig
+  }
+
+  const filePath = resolve(__dirname, config.tmpFileDir, config.tmpFileName)
+
+  writeFileSync(filePath, JSON.stringify(eslintConfig), {
+    encoding: 'utf-8',
+    flag: 'w',
+  })
 
   return eslintConfig
 }

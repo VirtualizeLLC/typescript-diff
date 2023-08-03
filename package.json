@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build:prod": "nx run tsc-diff:build",
-    "run:eslint-cli": "npx ts-node -r tsconfig-paths/register ./packages/tscd-eslint-runner/src/cli.ts --staged --verbose",
+    "run:eslint-cli": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts --upstream",
     "build": "pnpm i; nx run-many -t build-resolve-paths;",
     "run:cli": "npx ts-node ./packages/@tsc-diff/eslint/src/cli.ts",
     "watch-server": "nodemon --watch 'packages/**/*' -e ts,tsx --exec pnpm run rebuild",

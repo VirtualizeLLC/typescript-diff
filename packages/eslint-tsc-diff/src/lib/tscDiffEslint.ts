@@ -4,9 +4,15 @@ import { execSync } from 'child_process'
 import { shellConfig } from './constants/shellConfig'
 import { TSCDiffEslintConfig } from './types'
 import { generateTempEslintConfigFile } from './helpers/configReader'
+import { resolve } from 'path'
 
-const runEslintFromShell = (config: TSCDiffEslintConfig) => {
-  execSync('eslint --fix --config ', shellConfig)
+export const runEslintFromShell = (config: TSCDiffEslintConfig) => {
+  const eslintTmpConfigFile = resolve(config.tmpFileDir, config.tmpFileName)
+  console.log('running eslint')
+  execSync(`eslint --fix --config ${eslintTmpConfigFile}`, {
+    ...shellConfig,
+    stdio: 'inherit',
+  })
 }
 
 export function tscDiffEslint(config: TSCDiffEslintConfig) {
