@@ -1,0 +1,11 @@
+{
+  "name": "mock-eslint-Package",
+  "description": "testing functionality, should never be references as a project, by scripts or editors",
+  "eslintConfig": {
+    "rules": {
+      "@vllc/typescript-utils/xyz": [
+        "error"
+      ]
+    }
+  }
+}

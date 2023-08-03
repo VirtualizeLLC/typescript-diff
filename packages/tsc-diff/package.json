@@ -1,17 +1,7 @@
 {
-  "name": "tsc-diff",
+  "name": "@vllc/tsc-diff",
   "version": "0.0.1",
-  "license": "MIT",
-  "type": "commonjs",
-  "bin": "packages/tsc-diff/src/cli.js",
   "dependencies": {
-    "commander": "^11.0.0",
-    "tslib": "^2.3.0"
-  },
-  "peerDependencies": {
-    "typescript": ">=3.0.0"
-  },
-  "devDependencies": {
-    "typescript": "*"
+    "commander": "^11.0.0"
   }
 }

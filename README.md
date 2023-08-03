@@ -10,16 +10,26 @@
 
 ## Features
 
-This monorepo encompasses 1 utility `@vllc/tsc-diff` which is used to run eslint and jest. There are two packages specific to [eslint](https://eslint.org/) and [jest](https://jestjs.io/) to make running pre-commit and pre-push hooks easier. `@vllc/tsc-diff` also fully supports being run in isolatation and piping changes to custom test runners.
+This monorepo encompasses 1 utility `@tsc-diff/` which is used to run eslint and jest. There are two packages specific to [eslint](https://eslint.org/) and [jest](https://jestjs.io/) to make running pre-commit and pre-push hooks easier. `@tsc-diff/` also fully supports being run in isolatation and piping changes to custom test runners.
 
 If you have a tool/test-runner that you think needs to be supported please file an issue and consider contributing to add support for this tool.
 
 - Adds the ability to run tsc with your project's current config but only include specific files.
-- [@vllc/tsc-diff](./packages/tsc-diff) - main package, compiles only staged files
-- [@vllc/tsc-diff-eslint](./packages/tsc-diff) - eslint support
-- [@vllc/tsc-diff-jest](./packages/tsc-diff) - jest support
+- [@tsc-diff/](./packages/tsc-diff#README) - main package, compiles only staged files
+- [@tsc-diff/eslint](./packages/tsc-diff-eslint#README) - eslint support
+- [@tsc-diff/jest](./packages/tsc-diff#README) - jest support
   - Adds a compatibility script to directly mutate the tsconfig.json file (with backups) for babel-jest, which may work well with esbuild and swc-jest
   - Adds wrapper around jest so it runs `ts-jest` with the staged tsconfig file.
+
+Not for monorepos using eslint please consider using the EXPERIMENTAL_useProjectService
+
+```javascript
+modules.export = {
+  parserOptions: {
+    EXPERIMENTAL_useProjectService: true,
+  },
+}
+```
 
 ## Compatibility
 
@@ -33,28 +43,28 @@ If you have a tool/test-runner that you think needs to be supported please file 
 
 ## Install
 
-> @vllc/tsc-diff-eslint
+> @tsc-diff/eslint
 
 Install this package for eslint to run tsc only on the test files dependency tree.
 
 ```bash
-npm install -D @vllc/tsc-diff-eslint
+npm install -D @tsc-diff/eslint
 ```
 
-> @vllc/tsc-diff-jest
+> @tsc-diff/jest
 
 Install this package for jest to run tsc only on the test files dependency tree
 
 ```bash
-npm install -D @vllc/tsc-diff-jest
+npm install -D @tsc-diff/jest
 ```
 
-> @vllc/tsc-diff
+> @tsc-diff/
 
-Install this package for getting the staged and upstream diff file output with flexibility such as `@vllc/tsc-diff start` and `@vllc/tsc-diff stop` to cleanup the dynamic tsconfig.json file generated.
+Install this package for getting the staged and upstream diff file output with flexibility such as `@tsc-diff/ start` and `@tsc-diff/ stop` to cleanup the dynamic tsconfig.json file generated.
 
 ```bash
-npm install -D @vllc/tsc-diff
+npm install -D @tsc-diff/
 ```
 
 ## Usage

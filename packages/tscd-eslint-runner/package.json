@@ -1,0 +1,15 @@
+{
+  "name": "@vllc/tscd-eslint-runner",
+  "version": "0.0.1",
+  "dependencies": {
+    "@vllc/tsc-diff": "workspace:0.0.1",
+    "commander": "^11.0.0",
+    "js-yaml": "^4.1.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=5.0.0"
+  },
+  "devDependencies": {
+    "eslint": ">=8.0.0"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "restartable": "rs",
+  "delay": 2500,
+  "ignore": ["*.test.js", "**/fixtures/**", "**/dist/**", "**/node_modules/**"],
+  "watch": ["packages/**"]
+}

@@ -10,8 +10,14 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["pre-build", "^build"],
       "inputs": ["production", "^production"]
+    },
+    "build-resolve-paths": {
+      "dependsOn": ["build", "^build"]
+    },
+    "publish": {
+      "dependsOn": ["build-resolve-paths"]
     },
     "lint": {
       "inputs": [

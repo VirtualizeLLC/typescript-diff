@@ -1,0 +1,18 @@
+{
+  "name": "@vllc/typescript-utils",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "build-resolve-paths": {
+      "command": "npx resolve-tspaths --project ./tsconfig.base.json --out dist",
+      "dependsOn": ["^build"]
+    },
+    "local-registry": {
+      "executor": "@nx/js:verdaccio",
+      "options": {
+        "port": 4873,
+        "config": ".verdaccio/config.yml",
+        "storage": "tmp/local-registry/storage"
+      }
+    }
+  }
+}

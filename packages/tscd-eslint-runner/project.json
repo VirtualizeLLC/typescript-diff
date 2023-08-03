@@ -1,36 +1,36 @@
 {
-  "name": "tsc-diff",
+  "name": "tscd-eslint-runner",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/tsc-diff/src",
+  "sourceRoot": "packages/tscd-eslint-runner/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "packages/tsc-diff/dist",
-        "tsConfig": "packages/tsc-diff/tsconfig.lib.json",
-        "packageJson": "packages/tsc-diff/package.json",
-        "main": "packages/tsc-diff/src/index.ts",
-        "assets": ["packages/tsc-diff/*.md"]
+        "outputPath": "packages/tscd-eslint-runner/dist",
+        "tsConfig": "packages/tscd-eslint-runner/tsconfig.lib.json",
+        "packageJson": "packages/tscd-eslint-runner/package.json",
+        "main": "packages/tscd-eslint-runner/src/index.ts",
+        "assets": ["packages/tscd-eslint-runner/*.md"]
       }
     },
     "publish": {
-      "command": "node tools/scripts/publish.mjs tsc-diff {args.ver} {args.tag}",
+      "command": "node tools/scripts/publish.mjs tscd-eslint-runner {args.ver} {args.tag}",
       "dependsOn": ["build"]
     },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/tsc-diff/**/*.ts"]
+        "lintFilePatterns": ["packages/tscd-eslint-runner/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "packages/tsc-diff/jest.config.ts",
+        "jestConfig": "packages/tscd-eslint-runner/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
