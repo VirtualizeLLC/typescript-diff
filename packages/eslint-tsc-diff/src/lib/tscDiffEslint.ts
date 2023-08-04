@@ -5,14 +5,37 @@ import { TSCDiffEslintConfig } from './types'
 import { generateTempEslintConfigFile } from './helpers/generateConfig'
 import { execSyncOptions } from './constants/shellConfig'
 
+export const argsToRemove = ['--config', '--fix']
+export const argsToRemoveString = argsToRemove.join(' ')
+const argsToRemoveRegexp = argsToRemove.join('|').replace('--', '')
+
+export const parseEslintArgs = (args: string) => {
+  return args.replace(`--(${argsToRemoveRegexp})`, '')
+}
+
 export const runEslintFromShell = (
   eslintConfigFilePath: string,
   config: TSCDiffEslintConfig,
 ) => {
-  config.verbose && console.log('running eslint')
-  execSync(`eslint --fix --config ${eslintConfigFilePath}`, {
+  const scriptArgs = ['eslint', '--config', eslintConfigFilePath]
+
+  if (config.eslintFix) {
+    scriptArgs.push('--fix')
+  }
+
+  if (config.eslintArgs) {
+    scriptArgs.push(parseEslintArgs(config.eslintArgs))
+  }
+
+  const script = scriptArgs.join(' ')
+
+  if (config.verbose) {
+    console.log(`Running eslint script: ${script}`)
+  }
+
+  execSync(script, {
     ...execSyncOptions,
-    stdio: 'inherit',
+    stdio: config.eslintStdio,
   })
 }
 

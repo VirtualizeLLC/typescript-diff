@@ -11,7 +11,7 @@ export const isValidPath = (pathString: string) => {
 
 export const parseFilesToInclude = (config: TSCDiffEslintConfig) => {
   return config.files.filter((file: string) => {
-    if (config.allowJson && file.match('.json$')) {
+    if (config.allowJsonFiles && file.match('.json$')) {
       return true
     }
     if (file.match('.(ts|tsx)$')) {

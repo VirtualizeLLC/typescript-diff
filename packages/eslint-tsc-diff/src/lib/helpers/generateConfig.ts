@@ -8,7 +8,7 @@ import { writeFileOptions } from '../constants/shellConfig'
 import { ErrorMessage, WarningMessage } from '../constants/messages'
 
 const getTsconfigEslintFilePath = (config: TSCDiffEslintConfig) =>
-  resolve(config.tmpFileDir, config.tsconfigFileName)
+  resolve(config.tmpFileDir, config.tsconfigTmpFileName)
 
 /**
  * @description Generates a temp eslint config and optionally a temp tsconfig to be run in a shell process. The configs only include the files that match a pattern.
@@ -30,13 +30,16 @@ export const generateTempEslintConfigFile = (
   const tsconfigFile = readConfigFile(config.tsconfigPath)
   const filesToInclude = parseFilesToInclude(config)
 
+  /**
+   * early exit if files do not need to be generated. Use the found eslint file
+   */
   if (filesToInclude.length === 0) {
     config.verbose &&
       console.log(
         WarningMessage.NO_FILES_TO_INCLUDE,
         `skipping config generation and running with eslint file ${eslintFile}`,
       )
-    return eslintFile
+    return config.eslintConfigPath
   }
 
   const newTsConfig = {
@@ -99,7 +102,11 @@ export const generateTempEslintConfigFile = (
     return
   }
 
-  const filePath = resolve(__dirname, config.tmpFileDir, config.tmpFileName)
+  const filePath = resolve(
+    __dirname,
+    config.tmpFileDir,
+    config.eslintTmpFileName,
+  )
 
   writeFileSync(filePath, JSON.stringify(eslintConfig), writeFileOptions)
 
