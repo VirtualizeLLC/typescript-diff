@@ -8,4 +8,7 @@ export interface TSCDiffEslintConfig extends TscDiffConfig {
   tmpFileName: string
   tmpFileDir: string
   noInlineConfig: boolean
+  projectAsJson: boolean
+  tsconfigFileName: string
+  allowJson: boolean
 }

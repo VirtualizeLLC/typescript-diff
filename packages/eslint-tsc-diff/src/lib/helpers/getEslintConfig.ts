@@ -2,6 +2,7 @@ import { execSync } from 'child_process'
 import { accessSync } from 'fs'
 import { join } from 'path'
 import { readConfigFile } from './configReader'
+import { isValidPath } from './fileValidation'
 
 /**
  * PriorityOrder based on the docs: https://eslint.org/docs/latest/use/configure/configuration-files
@@ -16,21 +17,11 @@ export const eslintReadPriorityOrder = [
   '.eslintrc', // implicit .json and only supported as a backup
 ]
 
-const packageJSONKey = 'eslintConfig'
-
-const isValidDirPath = (pathString: string) => {
-  try {
-    accessSync(pathString)
-  } catch (e) {
-    throw new Error(`Invalid path provided: ${e}`)
-  }
-}
-
 /**
  * @description internal method exported to make testing easier
  */
 export const getEslintFiles = (eslintFileDir: string = process.cwd()) => {
-  isValidDirPath(eslintFileDir)
+  isValidPath(eslintFileDir)
 
   const files = execSync('ls -a', {
     cwd: eslintFileDir,

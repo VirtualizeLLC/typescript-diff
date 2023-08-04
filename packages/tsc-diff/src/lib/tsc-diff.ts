@@ -42,7 +42,7 @@ export const validateConfig = (config: TscDiffConfig) => {
   }
 }
 
-const shellConfig: ExecSyncOptions = {
+const execSyncOptions: ExecSyncOptions = {
   stdio: 'pipe',
   encoding: 'utf-8',
   maxBuffer: 60 * 1024 ** 2,
@@ -71,7 +71,7 @@ const parseFiles = (files: string | Buffer) => {
  * @description does a quick git diff to see the changed files
  */
 export const getStagedFiles = () => {
-  const files = execSync('git diff --staged --name-only', shellConfig)
+  const files = execSync('git diff --staged --name-only', execSyncOptions)
   return parseFiles(files)
 }
 
@@ -79,14 +79,14 @@ export const getStagedFiles = () => {
  * fetches upstream changes and returns the diff with current files
  */
 const getUpstreamFiles = (remoteName = 'origin') => {
-  const branchName = execSync('git branch --show-current', shellConfig)
+  const branchName = execSync('git branch --show-current', execSyncOptions)
 
   const remoteBranch = `${remoteName}/${branchName}`
 
-  execSync(`git fetch ${remoteName}`, shellConfig)
+  execSync(`git fetch ${remoteName}`, execSyncOptions)
   const filesDiff = execSync(
     `git diff --name-only ${remoteBranch}`,
-    shellConfig,
+    execSyncOptions,
   )
 
   return parseFiles(filesDiff)

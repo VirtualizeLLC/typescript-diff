@@ -42,7 +42,7 @@ cliSharedOptions(program)
     process.cwd(),
   )
   .option(
-    '--tmpFileName <string>',
+    '-eson, --eslintTmpFileName <string>',
     'The temp eslint file name, make sure this file is ignored in .gitignore, it must be a .json file',
     '.eslintrc-diff.json',
   )
@@ -55,17 +55,25 @@ cliSharedOptions(program)
     'eslint flag that prevents eslint from attempting to merge eslint config unrelated to the config file passed in. Enabling this could cause issues with extending rules based on path',
     false,
   )
+  .option(
+    '--projectAsJson <boolean>',
+    'allows for setting the output project file directly, this way of setting project may be deprecated or and/or broken on higher versions of @typescript/eslint-parser',
+  )
+  .option(
+    '-tson, --tsconfigFileName <boolean>',
+    'set the output filename for the eslintconfig that will be consumed by the @typescript/eslint-parser project the file will output to --tmpFileDir and will be deleted on cleanup',
+    'tsconfig.eslint-diff.json',
+  )
+  .option(
+    '--allowJsonFiles <boolean>',
+    'allow json files to be included in the generated tsconfig include array',
+    true,
+  )
   .action((config: TSCDiffEslintConfig) => {
     console.log('input config:', config)
     const output = tscDiffEslint(config)
     if (config.verbose) {
       console.log('output files:', output)
     }
-
-    if (config.dryRun) {
-      return output
-    }
-
-    runEslintFromShell(config)
   })
 program.parse(process.argv)

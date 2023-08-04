@@ -1,9 +1,6 @@
 import { load as ymlLoad } from 'js-yaml'
-import { readFileSync, writeFileSync } from 'fs'
+import { readFileSync } from 'fs'
 import { ESLint } from 'eslint'
-
-import { TSCDiffEslintConfig } from '../types'
-import { resolve } from 'path'
 
 const jsConfigPattern = '.eslintrc.(cjs|js)$'
 
@@ -56,59 +53,4 @@ export const readConfigFile = (filePath: string): ESLint.ConfigData => {
   }
 
   return parsedFile
-}
-
-export const generateTempEslintConfigFile = (config: TSCDiffEslintConfig) => {
-  const eslintFile = readConfigFile(config.eslintConfigPath)
-
-  if (!eslintFile) {
-    throw new Error('No eslint file detected')
-    return
-  }
-
-  const tsconfigFile = readConfigFile(config.tsconfigPath)
-
-  const parserOptions: ESLint.ConfigData['parserOptions'] = {
-    ...eslintFile.parserOptions,
-    sourceType: 'module',
-    project: {
-      ...tsconfigFile,
-      include: config.files,
-    },
-  }
-
-  /**
-   * applying parserOptions to overrides gets complicated due to needing to find the @typescript-eslint/parser
-   */
-  const overrides = [
-    ...eslintFile.overrides,
-    { files: ['*.ts', '*.tsx'], parserOptions },
-  ]
-
-  const eslintConfig: ESLint.ConfigData = {
-    ...eslintFile,
-    parserOptions,
-    overrides,
-  }
-
-  if (config.noInlineConfig !== undefined) {
-    eslintConfig.noInlineConfig = config.noInlineConfig
-  }
-
-  if (eslintConfig.overrides) {
-    config.verbose
-  }
-
-  if (config.dryRun) {
-    return eslintConfig
-  }
-
-  const filePath = resolve(__dirname, config.tmpFileDir, config.tmpFileName)
-
-  writeFileSync(filePath, JSON.stringify(eslintConfig), {
-    encoding: 'utf-8',
-    flag: 'w',
-  })
-
-  return eslintConfig
 }
