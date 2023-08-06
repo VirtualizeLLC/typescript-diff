@@ -18,4 +18,5 @@ export interface EslintTscDiffConfig extends TscDiffConfig {
   eslintIgnoreFiles: string[]
   eslintIncludeFiles: string[]
   tsconfigIncludeFiles: string[]
+  noEslintRc: boolean
 }

@@ -1,5 +1,6 @@
 import { execSync } from 'child_process'
 
+import { ESLint } from 'eslint'
 import { EslintTscDiffConfig } from './types/EslintTscDiffConfig'
 import { generateTempEslintConfigFile } from './helpers/generateConfig'
 import { execSyncOptions } from './constants/shellConfig'
@@ -26,17 +27,23 @@ export const runEslintFromShell = (
     )
     return
   }
-  const scriptArgs = [
-    'eslint',
-    filesToInclude.join(' '),
-    '--no-error-on-unmatched-pattern', // prevents having to filter all these changed files and search through eslint config to find files that are handled
-  ]
+  const scriptArgs = ['eslint', filesToInclude.join(' ')]
+
+  const [major, minor] = ESLint.version.split('.')
+  if ((parseInt(major) >= 6 && parseInt(minor) >= 8) || parseInt(major) > 6) {
+    // prevents having to filter all these changed files and search through eslint config to find files that are handled >=6.x.x
+    scriptArgs.push('--no-error-on-unmatched-pattern')
+  }
 
   if (config.eslintFix) {
     scriptArgs.push('--fix')
   }
 
   scriptArgs.push('--config', eslintConfigFilePath)
+
+  if (config.noEslintRc) {
+    scriptArgs.push('--no-eslintrc')
+  }
 
   if (config.eslintArgs) {
     scriptArgs.push(parseEslintArgs(config.eslintArgs))

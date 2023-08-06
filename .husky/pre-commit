@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm run eslint-staged
+pnpm run eslint-diff-staged
 
 git add .

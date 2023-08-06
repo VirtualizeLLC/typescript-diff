@@ -12,78 +12,83 @@ const program = new Command(packageJson.name)
 cliSharedOptions(program)
   .name(packageJson.name)
   .option(
-    '--tsconfigPath <path>',
+    '--tsconfig-path <path>',
     'add a typescript config path, must be relative from current process directory',
     globalConfigInstance.tsconfigPath,
   )
   .option(
-    '--eslintConfigPath <path>',
+    '--eslint-config-path <path>',
     'set the root directory. Useful if the directory is relative',
     globalConfigInstance.eslintConfigPath,
   )
   .option(
-    '--dryRun <boolean>',
+    '--dry-run <boolean>',
     'outputs the change in config only',
     globalConfigInstance.dryRun,
   )
   .option(
-    '--tmpFileDir <string>',
+    '--tmp-file-dir <string>',
     'The directory the eslint file outputs to',
     globalConfigInstance.tmpFileDir,
   )
   .option(
-    '-eson, --eslintTmpFileName <string>',
+    '-eson, --eslint-tmp-file-name <string>',
     'The temp eslint file name, make sure this file is ignored in .gitignore, it must be a .json file',
     globalConfigInstance.eslintTmpFileName,
   )
   .option(
-    '--retainTmpFiles <boolean>',
+    '--retain-tmp-files <boolean>',
     'allows for retaining the temp eslint file for debugging purposes',
   )
   .option(
-    '--noInlineConfig <boolean>',
+    '--no-inline-config <boolean>',
     'eslint flag that prevents eslint from attempting to merge eslint config unrelated to the config file passed in. Enabling this could cause issues with extending rules based on path',
   )
   .option(
-    '--projectAsJson <boolean>',
+    '--project-as-json <boolean>',
     'allows for setting the output project file directly, this way of setting project may be deprecated or and/or broken on higher versions of @typescript/eslint-parser',
   )
   .option(
-    '-tson, --tsconfigTmpFileName <boolean>',
+    '-tson, --tsconfig-tmp-file-name <boolean>',
     'set the output filename for the eslintconfig that will be consumed by the @typescript/eslint-parser project the file will output to --tmpFileDir and will be deleted on cleanup',
     'tsconfig.eslint-diff.json',
   )
   .option(
-    '--allowJsonFiles <boolean>',
+    '--allow-json-files <boolean>',
     'allow json files to be included in the generated tsconfig include array',
     globalConfigInstance.allowJsonFiles,
   )
   .option(
-    '-eargs, --eslintArgs <string>',
+    '-eargs, --eslint-args <string>',
     `These args will be passed to the eslint cli directly. Warning: args will be ignored: ${argsToRemoveString}`,
   )
   .option(
-    '--eslintFix',
+    '--eslint-fix',
     'eslint fix arg is passed into the eslint command',
     globalConfigInstance.eslintFix,
   )
   .option(
-    '--eslintStdio <string>',
+    '--eslint-stdio <string>',
     'manually set the stdio for the eslint script. Typically it will be set to inherit',
     globalConfigInstance.eslintStdio as string,
   )
   .option(
-    '--eslintIgnoreFiles [filePatterns...]',
+    '--eslint-ignore-files [filePatterns...]',
     'A list of files or regexp patterns to ignore, these files will not be parsed by eslint',
     globalConfigInstance.eslintIgnoreFiles,
   )
   .option(
-    '--eslintIncludeFiles [filePatterns...]',
+    '--eslint-include-files [filePatterns...]',
     'A list of files or regexp patterns to include (this will be combined with ignore files, ignore files win), these files will be parsed by eslint',
     globalConfigInstance.eslintIncludeFiles,
   )
   .option(
-    '--tsconfigIncludeFile [filePatterns...]',
+    '--no-eslint-rc <boolean>',
+    'eslint flag for skipping nested eslint parsing',
+    globalConfigInstance.noEslintRc,
+  )
+  .option(
+    '--tsconfig-include-files [filePatterns...]',
     'A list of files or regexp patterns to include, this will override the default .ts|tsx matcher',
     globalConfigInstance.tsconfigIncludeFiles,
   )

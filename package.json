@@ -9,8 +9,9 @@
   ],
   "scripts": {
     "build:prod": "nx run tsc-diff:build",
-    "eslint-staged": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts --staged",
-    "eslint-cli": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts --upstream",
+    "eslint-diff-staged": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts --staged",
+    "eslint-diff-upstream": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts --upstream",
+    "eslint-cli": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts",
     "build": "pnpm i; nx run-many -t build-resolve-paths;",
     "test:watch": "nx run eslint-tsc-diff:test --watch",
     "run:cli": "npx ts-node ./packages/@tsc-diff/eslint/src/cli.ts",

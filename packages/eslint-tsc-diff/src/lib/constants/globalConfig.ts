@@ -22,6 +22,7 @@ export class GlobalConfig implements EslintTscDiffConfig {
     '.(yaml|yml|json)$',
   ]
   eslintIncludeFiles: string[] = ['.(cjs|mjs|js|jsx|ts|tsx)']
+  noEslintRc: boolean = false
   tsconfigIncludeFiles: string[] = []
 
   update(config: Partial<EslintTscDiffConfig>) {
