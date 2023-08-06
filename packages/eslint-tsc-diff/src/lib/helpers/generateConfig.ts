@@ -1,13 +1,13 @@
-import { isValidPath, parseFilesToInclude } from './fileValidation'
 import { writeFileSync } from 'fs'
-import { TSCDiffEslintConfig } from '../types'
 import { resolve } from 'path'
-import { readConfigFile } from './configReader'
 import { ESLint } from 'eslint'
+import { isValidPath, parseFilesToInclude } from './fileValidation'
+import { EslintTscDiffConfig } from '../types/EslintTscDiffConfig'
+import { readConfigFile } from './configReader'
 import { writeFileOptions } from '../constants/shellConfig'
 import { ErrorMessage, WarningMessage } from '../constants/messages'
 
-const getTsconfigEslintFilePath = (config: TSCDiffEslintConfig) =>
+const getTsconfigEslintFilePath = (config: EslintTscDiffConfig) =>
   resolve(config.tmpFileDir, config.tsconfigTmpFileName)
 
 /**
@@ -16,7 +16,7 @@ const getTsconfigEslintFilePath = (config: TSCDiffEslintConfig) =>
  * @returns path string of eslint file
  */
 export const generateTempEslintConfigFile = (
-  config: TSCDiffEslintConfig,
+  config: EslintTscDiffConfig,
 ): string => {
   const eslintFile = readConfigFile(config.eslintConfigPath)
 

@@ -26,7 +26,16 @@
         "lintFilePatterns": ["packages/eslint-tsc-diff/**/*.ts"]
       }
     },
+    "generate-test-files": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "ts-node packages/eslint-tsc-diff/scripts/generateEslintTestFiles.ts"
+        ]
+      }
+    },
     "test": {
+      "dependsOn": ["generate-test-files"],
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {

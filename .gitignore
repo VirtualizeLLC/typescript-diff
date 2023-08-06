@@ -38,5 +38,7 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# generated files
+# generated files from @vllc/eslint-tsc-diff
 .eslintrc-diff.json
+tsconfig.eslint-diff.json
+packages/eslint-tsc-diff/src/__test__/eslintConfigFiles/**

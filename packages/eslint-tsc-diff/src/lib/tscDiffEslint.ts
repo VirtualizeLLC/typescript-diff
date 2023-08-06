@@ -1,9 +1,10 @@
 import { execSync } from 'child_process'
-import { tscDiff } from '@vllc/tsc-diff'
 
-import { TSCDiffEslintConfig } from './types'
+import { EslintTscDiffConfig } from './types/EslintTscDiffConfig'
 import { generateTempEslintConfigFile } from './helpers/generateConfig'
 import { execSyncOptions } from './constants/shellConfig'
+import { globalConfigInstance } from './constants/globalConfig'
+import { parseEslintFilesToInclude } from './helpers/fileValidation'
 
 export const argsToRemove = ['--config', '--fix']
 export const argsToRemoveString = argsToRemove.join(' ')
@@ -15,13 +16,27 @@ export const parseEslintArgs = (args: string) => {
 
 export const runEslintFromShell = (
   eslintConfigFilePath: string,
-  config: TSCDiffEslintConfig,
+  config: EslintTscDiffConfig,
 ) => {
-  const scriptArgs = ['eslint', '--config', eslintConfigFilePath]
+  const filesToInclude = parseEslintFilesToInclude(config)
+  if (!filesToInclude) {
+    console.error(
+      'no files to include',
+      `original files length: ${config.files.length}, with ignoreFilter ${filesToInclude.length}`,
+    )
+    return
+  }
+  const scriptArgs = [
+    'eslint',
+    filesToInclude.join(' '),
+    '--no-error-on-unmatched-pattern', // prevents having to filter all these changed files and search through eslint config to find files that are handled
+  ]
 
   if (config.eslintFix) {
     scriptArgs.push('--fix')
   }
+
+  scriptArgs.push('--config', eslintConfigFilePath)
 
   if (config.eslintArgs) {
     scriptArgs.push(parseEslintArgs(config.eslintArgs))
@@ -30,21 +45,17 @@ export const runEslintFromShell = (
   const script = scriptArgs.join(' ')
 
   if (config.verbose) {
-    console.log(`Running eslint script: ${script}`)
+    console.log(`\nRunning eslint script: ${script}`)
   }
 
   execSync(script, {
     ...execSyncOptions,
-    stdio: config.eslintStdio,
+    stdio: 'inherit',
   })
 }
 
-export function tscDiffEslint(config: TSCDiffEslintConfig) {
-  const files = tscDiff(config)
-  const eslintConfigFilePath = generateTempEslintConfigFile({
-    ...config,
-    files,
-  })
+export function tscDiffEslint(config: typeof globalConfigInstance) {
+  const eslintConfigFilePath = generateTempEslintConfigFile(config)
 
   if (config.dryRun) {
     return

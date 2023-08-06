@@ -4,8 +4,8 @@ import { cliSharedOptions } from '@vllc/tsc-diff'
 import packageJson from '../package.json'
 import { argsToRemoveString, tscDiffEslint } from './lib/tscDiffEslint'
 
-import { TSCDiffEslintConfig } from './lib/types'
-import { globalConfigInstance } from './lib/constants/cliConfig'
+import { EslintTscDiffConfig } from './lib/types/EslintTscDiffConfig'
+import { globalConfigInstance } from './lib/constants/globalConfig'
 
 const program = new Command(packageJson.name)
 
@@ -19,6 +19,7 @@ cliSharedOptions(program)
   .option(
     '--eslintConfigPath <path>',
     'set the root directory. Useful if the directory is relative',
+    globalConfigInstance.eslintConfigPath,
   )
   .option(
     '--dryRun <boolean>',
@@ -67,16 +68,27 @@ cliSharedOptions(program)
     globalConfigInstance.eslintFix,
   )
   .option(
-    '--eslintStdio',
+    '--eslintStdio <string>',
     'manually set the stdio for the eslint script. Typically it will be set to inherit',
-    'inherit',
+    globalConfigInstance.eslintStdio as string,
   )
-  .action((config: Partial<TSCDiffEslintConfig>) => {
+  .option(
+    '--eslintIgnoreFiles [filePatterns...]',
+    'A list of files or regexp patterns to ignore, these files will not be parsed by eslint',
+    globalConfigInstance.eslintIgnoreFiles,
+  )
+  .option(
+    '--eslintIncludeFiles [filePatterns...]',
+    'A list of files or regexp patterns to include (this will be combined with ignore files, ignore files win), these files will be parsed by eslint',
+    globalConfigInstance.eslintIncludeFiles,
+  )
+  .option(
+    '--tsconfigIncludeFile [filePatterns...]',
+    'A list of files or regexp patterns to include, this will override the default .ts|tsx matcher',
+    globalConfigInstance.tsconfigIncludeFiles,
+  )
+  .action((config: Partial<EslintTscDiffConfig>) => {
     globalConfigInstance.update(config)
-
-    const output = tscDiffEslint(globalConfigInstance)
-    if (config.verbose) {
-      console.log('output files:', output)
-    }
+    tscDiffEslint(globalConfigInstance)
   })
 program.parse(process.argv)

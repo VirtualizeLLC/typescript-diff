@@ -1,5 +1,6 @@
 import { resolve } from 'path'
-import baseEslintRcFile from '@vllc/typescript-utils/.eslintrc'
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import baseEslintRcFile from './eslintConfigFiles/.eslintrc.json'
 import mockPackageJson from './eslintConfigFiles/package.json'
 import { readConfigFile } from '../lib/helpers/configReader'
 

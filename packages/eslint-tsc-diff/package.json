@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "eslint": ">=8.0.0",
-    "@typescript-eslint/parser": "^6.2.1"
+    "@typescript-eslint/parser": "^6.2.1",
+    "yaml": "^2.3.1"
   }
 }

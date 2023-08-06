@@ -1,6 +1,5 @@
 import { execSync } from 'child_process'
-import { accessSync } from 'fs'
-import { join } from 'path'
+import { join, resolve } from 'path'
 import { readConfigFile } from './configReader'
 import { isValidPath } from './fileValidation'
 
@@ -57,7 +56,12 @@ export const getEslintConfigFile = (
     for (const fileToMatch of matches) {
       if (fileToMatch.match(new RegExp(`${eslintFileOrderItem}$`))) {
         if (eslintFileOrderItem === 'package.json') {
-          const eslintConfig = readConfigFile(`${eslintFilesDir}/package.json`)
+          const eslintConfig = readConfigFile(
+            resolve(eslintFilesDir, 'package.json'),
+          )
+          /**
+           * if the package.json does not have an eslintConfig skip it.
+           */
           if (!eslintConfig) {
             continue
           }

@@ -1,7 +1,7 @@
-import { TscDiffConfig } from '@vllc/tsc-diff'
 import { StdioOptions } from 'child_process'
+import { TscDiffConfig } from '@vllc/tsc-diff'
 
-export interface TSCDiffEslintConfig extends TscDiffConfig {
+export interface EslintTscDiffConfig extends TscDiffConfig {
   allowJsonFiles: boolean
   dryRun?: boolean
   eslintConfigPath: string // required path to eslint config
@@ -15,4 +15,7 @@ export interface TSCDiffEslintConfig extends TscDiffConfig {
   tmpFileDir: string
   tsconfigTmpFileName: string
   tsconfigPath: string // required path to eslint config
+  eslintIgnoreFiles: string[]
+  eslintIncludeFiles: string[]
+  tsconfigIncludeFiles: string[]
 }

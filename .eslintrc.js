@@ -1,5 +1,8 @@
 const tsconfig = require('./tsconfig.base.json')
 
+/**
+ * aliases should not have asterisks or trailing slashes
+ */
 const aliasMap = Object.entries(tsconfig.compilerOptions.paths).map(
   ([key, value]) => [key.replace('/*', ''), value[0].replace('*', '')],
 )
@@ -8,6 +11,7 @@ module.exports = {
   root: true,
   extends: ['plugin:import/recommended'],
   plugins: ['@nx'],
+  // noInlineConfig: true, // due to having eslintConfig test files eslint does not ignore them even with ignore paths specified.
   settings: {
     'import/resolver': {
       typescript: true,

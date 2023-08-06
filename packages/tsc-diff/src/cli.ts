@@ -13,12 +13,7 @@ cliSharedOptions(
     )
     .version(packageJson.version)
     .action((config: TscDiffConfig) => {
-      console.log('input config:', config)
-      const output = tscDiff(config)
-
-      if (config.verbose) {
-        console.log('output files:', output)
-      }
+      tscDiff(config)
     }),
 )
 
