@@ -6,6 +6,8 @@ const testConfigFileDir = resolve(__dirname, './eslintConfigFiles')
 const getEslintFilesSpy = jest.spyOn(helpers, 'getEslintFiles')
 const readConfigFileSpy = jest.spyOn(configReaderHelpers, 'readConfigFile')
 
+//
+
 describe('getFiles()', () => {
   it('returns all the supported files', () => {
     const output = helpers.getEslintFiles(testConfigFileDir)
