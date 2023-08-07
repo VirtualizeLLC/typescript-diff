@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-pnpm run eslint-diff-upstream
+pnpm run eslint-diff:upstream

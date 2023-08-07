@@ -1,4 +1,4 @@
-# typescript-utils monorepo
+# typescript-diff utils monorepo
 
 [![Issues][issues-img]][issues-url]
 [![Code Coverage][codecov-img]][codecov-url]
@@ -22,10 +22,6 @@ Please reference the individual packages below.
 [![npm package][npm-img-eslint-tsc-diff]][npm-url-eslint-tsc-diff]
 [![Build Status][build-img]][build-url]
 [![Downloads][downloads-img-eslint-tsc-diff]][downloads-url-eslint-tsc-diff]
-[![Issues][issues-img]][issues-url]
-[![Code Coverage][codecov-img]][codecov-url]
-[![Commitizen Friendly][commitizen-img]][commitizen-url]
-[![Semantic Release][semantic-release-img]][semantic-release-url]
 
 ## Disclaimer
 
