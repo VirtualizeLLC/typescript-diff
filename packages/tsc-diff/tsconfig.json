@@ -6,6 +6,9 @@
   },
   "files": [],
   "include": [],
+  "paths": {
+    "../package.json": ["./package.json"]
+  },
   "references": [
     {
       "path": "./tsconfig.lib.json"

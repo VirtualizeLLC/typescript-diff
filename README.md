@@ -1,4 +1,4 @@
-# typescript-diff utils monorepo
+# typescript-diff monorepo
 
 [![Issues][issues-img]][issues-url]
 [![Code Coverage][codecov-img]][codecov-url]

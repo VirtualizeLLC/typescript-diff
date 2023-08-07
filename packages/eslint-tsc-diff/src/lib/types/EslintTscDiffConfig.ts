@@ -4,6 +4,8 @@ import { TscDiffConfig } from '@vllc/tsc-diff'
 export interface EslintTscDiffConfig extends TscDiffConfig {
   allowJsonFiles: boolean
   dryRun?: boolean
+  configFileDir: string
+  configFileName: string
   eslintConfigPath: string // required path to eslint config
   eslintTmpFileName: string
   eslintArgs?: string

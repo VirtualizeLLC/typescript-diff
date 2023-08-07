@@ -37,7 +37,14 @@
   "homepage": "https://github.com/VirtualizeLLC/typescript-utils#README",
   "dependencies": {
     "commander": "^11.0.0",
-    "tslib": "^2.3.0"
+    "dotenv": "^16.3.1",
+    "tslib": "^2.3.0",
+    "@vllc/tsc-diff": "workspace:0.0.1-beta"
+  },
+  "dependenciesMeta": {
+    "@vllc/tsc-diff": {
+      "injected": true
+    }
   },
   "devDependencies": {
     "@nx/esbuild": "16.6.0",

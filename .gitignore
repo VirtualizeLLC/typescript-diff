@@ -40,5 +40,6 @@ Thumbs.db
 
 # generated files from @vllc/eslint-tsc-diff
 .eslintrc-diff.json
+.eslint-tsc-diff.json
 tsconfig.eslint-diff.json
 packages/eslint-tsc-diff/src/__test__/eslintConfigFiles/**

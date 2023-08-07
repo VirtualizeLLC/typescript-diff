@@ -1,6 +1,11 @@
 {
   "name": "@vllc/tsc-diff",
   "version": "0.0.1-beta",
+  "files": [
+    "dist"
+  ],
+  "cli": "dist/cli.js",
+  "main": "dist/index.js",
   "dependencies": {
     "commander": "^11.0.0"
   }

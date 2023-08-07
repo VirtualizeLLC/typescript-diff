@@ -10,9 +10,16 @@
       "options": {
         "outputPath": "packages/tsc-diff/dist",
         "tsConfig": "packages/tsc-diff/tsconfig.lib.json",
+        "rootDir": "packages/tsc-diff/src",
         "packageJson": "packages/tsc-diff/package.json",
-        "main": "packages/tsc-diff/src/index.ts",
+        "main": "packages/tsc-diff/dist/index.ts",
         "assets": ["packages/tsc-diff/*.md"]
+      }
+    },
+    "cli": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "tsc-diff:build"
       }
     },
     "publish": {
