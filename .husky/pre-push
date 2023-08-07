@@ -1,4 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-pnpm run eslint-diff-upstream
+nx run-many -t build
+pnpm install
+pnpm exec eslint-tsc-diff --upstream

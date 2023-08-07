@@ -10,6 +10,7 @@
       "options": {
         "outputPath": "packages/eslint-tsc-diff/dist",
         "tsConfig": "packages/eslint-tsc-diff/tsconfig.lib.json",
+        "rootDir": "packages/eslint-tsc-diff/src",
         "packageJson": "packages/eslint-tsc-diff/package.json",
         "main": "packages/eslint-tsc-diff/src/index.ts",
         "assets": ["packages/eslint-tsc-diff/*.md"]

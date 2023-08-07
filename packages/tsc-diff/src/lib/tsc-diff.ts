@@ -34,6 +34,18 @@ export const validateConfig = (config: TscDiffConfig) => {
     })
   }
 
+  if (
+    !config.staged &&
+    !config.upstream &&
+    (!config.files || config.files?.length === 0)
+  ) {
+    errors.push({
+      type: ErrorTypes.INVALID_CONFIG,
+      message:
+        'No --staged --upstream flags provided, please provided a flag otherwise no files will be fetched',
+    })
+  }
+
   if (errors.length > 0) {
     errors.forEach(({ type, message }) => {
       console.error(type, message)

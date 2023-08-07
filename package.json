@@ -1,5 +1,5 @@
 {
-  "name": "@vllc/tscd",
+  "name": "@vllc/tsc-diff-monorepo",
   "version": "0.0.0",
   "license": "MIT",
   "author": "Frederick Engelhardt",
@@ -8,37 +8,44 @@
     "Frederick Engelhardt"
   ],
   "scripts": {
-    "build:prod": "nx run tsc-diff:build",
-    "eslint-diff-staged": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts --staged",
-    "eslint-diff-upstream": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts --upstream",
+    "build:prod": "nx run-many -t build",
     "eslint-cli": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts",
-    "build": "pnpm i; nx run-many -t build-resolve-paths;",
-    "test:watch": "nx run eslint-tsc-diff:test --watch",
-    "run:cli": "npx ts-node ./packages/@tsc-diff/eslint/src/cli.ts",
+    "eslint-diff:staged": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts --staged",
+    "eslint-diff:upstream": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts --upstream",
+    "tsc-diff:cli": "npx ts-node ./packages/@tsc-diff/eslint/src/cli.ts",
+    "eslint-tsc-diff:cli": "npx ts-node ./packages/@tsc-diff/eslint/src/cli.ts",
+    "setup:globals": "npm i -g pnpm@8.6.10 nx@16.5.5",
     "watch-server": "nodemon --watch 'packages/**/*' -e ts,tsx --exec pnpm run rebuild",
     "prepare": "husky install"
   },
   "private": false,
   "engines": {
-    "node": ">=20.0"
+    "node": ">=20.0",
+    "pnpm": ">=8.6.10"
   },
   "keywords": [
     "typescript",
-    "git diff",
+    "tsc",
     "eslint",
-    "lint-staged",
-    "jest"
+    "diff",
+    "staged",
+    "upstream",
+    "jest",
+    "cli"
   ],
   "bugs": {
-    "url": "https://github.com/VirtualizeLLC/typescript-utils/issues"
+    "url": "https://github.com/VirtualizeLLC/typescript-diff/issues"
   },
-  "homepage": "https://github.com/VirtualizeLLC/typescript-utils#README",
+  "homepage": "https://github.com/VirtualizeLLC/typescript-diff#README",
   "dependencies": {
-    "@tsc-diff/core": "link:packages/tsc-diff-core",
-    "@tsc-diff/eslint": "link:packages/tsc-diff-eslint",
-    "axios": "^1.0.0",
     "commander": "^11.0.0",
+    "dotenv": "^16.3.1",
     "tslib": "^2.3.0"
+  },
+  "dependenciesMeta": {
+    "@vllc/tsc-diff": {
+      "injected": true
+    }
   },
   "devDependencies": {
     "@nx/esbuild": "16.6.0",
@@ -56,6 +63,8 @@
     "@types/node": "^20.4.5",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
+    "@vllc/tsc-diff": "workspace:0.0.1-beta",
+    "@vllc/eslint-tsc-diff": "workspace:0.0.1-beta",
     "conventional-changelog-conventionalcommits": "^6.1.0",
     "esbuild": "^0.17.17",
     "eslint": "^8.46.0",
@@ -75,7 +84,6 @@
     "semantic-release": "^21.0.7",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
-    "tsc-alias": "^1.8.7",
     "tsconfig-paths": "^4.2.0",
     "typescript": "~5.1.3",
     "verdaccio": "^5.0.4",

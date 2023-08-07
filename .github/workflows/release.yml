@@ -18,12 +18,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20.5.0
+      - name: Install PNPM & NX
+        run: npm run setup:globals
       - name: Install dependencies
-        run: npm ci
+        run: pnpm i
       - name: Build
-        run: npm run build
+        run: nx run-many -t build
       - name: Test
-        run: npm test
+        run: nx run-many -t test
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_AUTOMATION }}

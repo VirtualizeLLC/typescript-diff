@@ -1,19 +1,13 @@
 # tsc-diff
 
+This library outputs all the diff files for upstream and staged files.
+
 This library was generated with [Nx](https://nx.dev).
-
-
 
 ## Building
 
 Run `nx build tsc-diff` to build the library.
 
-
-
-
-
 ## Running unit tests
 
 Run `nx test tsc-diff` to execute the unit tests via [Jest](https://jestjs.io).
-
-

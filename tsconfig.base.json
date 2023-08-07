@@ -20,7 +20,7 @@
     "paths": {
       "@vllc/tsc-diff": ["packages/tsc-diff/src/index.ts"],
       "@vllc/eslint-tsc-diff": ["packages/eslint-tsc-diff/src/index.ts"],
-      "@vllc/typescript-utils/*": ["./*"]
+      "@vllc/typescript-diff/*": ["./*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,9 +1,9 @@
-# typescript-utils monorepo
+# typescript-diff monorepo
 
 [![Issues][issues-img]][issues-url]
 [![Code Coverage][codecov-img]][codecov-url]
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
-[![Semantic Release][semantic-release-img]]
+[![Semantic Release[semantic-release-ur]][semantic-release-img]]
 
 A combination of helpful typescript packages that make tools like jest and eslint to behave more efficiently for projects that need to scale.
 
@@ -22,10 +22,6 @@ Please reference the individual packages below.
 [![npm package][npm-img-eslint-tsc-diff]][npm-url-eslint-tsc-diff]
 [![Build Status][build-img]][build-url]
 [![Downloads][downloads-img-eslint-tsc-diff]][downloads-url-eslint-tsc-diff]
-[![Issues][issues-img]][issues-url]
-[![Code Coverage][codecov-img]][codecov-url]
-[![Commitizen Friendly][commitizen-img]][commitizen-url]
-[![Semantic Release][semantic-release-img]][semantic-release-url]
 
 ## Disclaimer
 
@@ -63,7 +59,7 @@ If you have a tool/test-runner that you think needs to be supported please file 
 
 ## Getting started
 
-> typescript-utils monorepo packages
+> typescript-diff monorepo packages
 
 ## Install
 
@@ -124,8 +120,8 @@ Type: `object`
 Type: `string`
 Default: `rainbows`
 
-[build-img]: https://github.com/VirtualizeLLC/typescript-utils/actions/workflows/release.yml/badge.svg
-[build-url]: https://github.com/VirtualizeLLC/typescript-utils/actions/workflows/release.yml
+[build-img]: https://github.com/VirtualizeLLC/typescript-diff/actions/workflows/release.yml/badge.svg
+[build-url]: https://github.com/VirtualizeLLC/typescript-diff/actions/workflows/release.yml
 [downloads-img-eslint-tsc-diff]: https://img.shields.io/npm/dt/@vllc/eslint-tsc-diff
 [downloads-img-tsc-diff]: https://img.shields.io/npm/dt/@vllc/tsc-diff
 [downloads-url-eslint-tsc-diff]: https://npmtrends.com/@vllc/eslint-tsc-diff
@@ -144,10 +140,10 @@ Default: `rainbows`
 
 <!-- rest -->
 
-[issues-img]: https://img.shields.io/github/issues/VirtualizeLLC/typescript-utils
-[issues-url]: https://github.com/VirtualizeLLC/typescript-utils/issues
-[codecov-img]: https://codecov.io/gh/VirtualizeLLC/typescript-utils/branch/main/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/VirtualizeLLC/typescript-utils
+[issues-img]: https://img.shields.io/github/issues/VirtualizeLLC/typescript-diff
+[issues-url]: https://github.com/VirtualizeLLC/typescript-diff/issues
+[codecov-img]: https://codecov.io/gh/VirtualizeLLC/typescript-diff/branch/main/graph/badge.svg
+[codecov-url]: https://codecov.io/gh/VirtualizeLLC/typescript-diff
 [semantic-release-img]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-release-url]: https://github.com/semantic-release/semantic-release
 [commitizen-img]: https://img.shields.io/badge/commitizen-friendly-brightgreen.svg
