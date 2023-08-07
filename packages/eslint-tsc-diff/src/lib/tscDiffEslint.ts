@@ -20,14 +20,19 @@ export const runEslintFromShell = (
   config: EslintTscDiffConfig,
 ) => {
   const filesToInclude = parseEslintFilesToInclude(config)
-  if (!filesToInclude) {
+  const files = filesToInclude.join(' ')
+  if (!filesToInclude || files.length === 0) {
     console.error(
       'no files to include',
       `original files length: ${config.files.length}, with ignoreFilter ${filesToInclude.length}`,
     )
     return
   }
-  const scriptArgs = ['eslint', filesToInclude.join(' ')]
+  const scriptArgs = ['eslint', files]
+
+  if (config.eslintScriptRunner) {
+    scriptArgs.unshift(config.eslintScriptRunner)
+  }
 
   const [major, minor] = ESLint.version.split('.')
   if ((parseInt(major) >= 6 && parseInt(minor) >= 8) || parseInt(major) > 6) {

@@ -1,6 +1,7 @@
 {
   "name": "@vllc/eslint-tsc-diff",
   "version": "0.0.1-beta",
+  "bin": "./dist/bin/eslint-tsc-diff.js",
   "dependencies": {
     "@vllc/tsc-diff": "0.0.1-beta",
     "commander": "^11.0.0",

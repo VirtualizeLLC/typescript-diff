@@ -19,6 +19,7 @@ export const globalConfigDefaults: EslintTscDiffConfig = {
   eslintIncludeFiles: ['.(cjs|mjs|js|jsx|ts|tsx)$'],
   eslintStdio: 'inherit',
   eslintTmpFileName: '.eslintrc-diff.json',
+  eslintScriptRunner: 'npx',
   files: undefined,
   noEslintRc: false,
   noInlineConfig: false,
@@ -40,6 +41,7 @@ export class GlobalConfig implements EslintTscDiffConfig {
   eslintIncludeFiles: string[]
   eslintStdio: StdioOptions
   eslintTmpFileName: string
+  eslintScriptRunner?: string
   files?: string[]
   noEslintRc: boolean
   noInlineConfig: boolean
@@ -57,7 +59,7 @@ export class GlobalConfig implements EslintTscDiffConfig {
   /**
    * if this is called before
    */
-  parseConfig = () => {
+  parseConfig = (): Partial<EslintTscDiffConfig> | null => {
     try {
       const files = readdirSync(this.configFileDir, 'utf-8')
       const hasConfigFile = new Set(files).has(this.configFileName)

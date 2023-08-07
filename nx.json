@@ -13,11 +13,8 @@
       "dependsOn": ["pre-build", "^build"],
       "inputs": ["production", "^production"]
     },
-    "build-resolve-paths": {
-      "dependsOn": ["build", "^build"]
-    },
     "publish": {
-      "dependsOn": ["build-resolve-paths"]
+      "dependsOn": ["build"]
     },
     "lint": {
       "inputs": [

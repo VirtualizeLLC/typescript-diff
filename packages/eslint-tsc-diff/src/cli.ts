@@ -102,6 +102,11 @@ const runCli = async () => {
       globalConfigInstance.eslintIncludeFiles,
     )
     .option(
+      '--eslint-script-runner <npx|pnpx|yarn|eslint|undefined>',
+      'The script runner for running eslint cli, either a package manager or eslint if globally installed',
+      globalConfigInstance.eslintScriptRunner,
+    )
+    .option(
       '--no-eslint-rc <boolean>',
       'eslint flag for skipping nested eslint parsing',
       globalConfigInstance.noEslintRc,

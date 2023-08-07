@@ -19,6 +19,7 @@ export interface EslintTscDiffConfig extends TscDiffConfig {
   tsconfigPath: string // required path to eslint config
   eslintIgnoreFiles: string[]
   eslintIncludeFiles: string[]
+  eslintScriptRunner?: 'npx' | 'pnpx' | 'yarn' | string // losely typed but one of the 3 should be applicable
   tsconfigIncludeFiles: string[]
   noEslintRc: boolean
 }
