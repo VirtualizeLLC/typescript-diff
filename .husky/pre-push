@@ -4,4 +4,4 @@
 pnpm install
 pnpm exec nx run-many -t build
 pnpm link -w ./packages/tsc-diff
-pnpm exec eslint-tsc-diff --upstream
+pnpm run eslint-diff:upstream
