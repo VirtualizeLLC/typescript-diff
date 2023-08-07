@@ -3,6 +3,7 @@
 
 pnpm exec nx run-many -t build
 pnpm install
+pnpm link -w ./packages/tsc-diff
 pnpm exec eslint-tsc-diff --staged
 
 git add .

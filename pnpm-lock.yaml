@@ -74,7 +74,7 @@ importers:
         version: link:packages/eslint-tsc-diff
       '@vllc/tsc-diff':
         specifier: workspace:*
-        version: file:packages/tsc-diff
+        version: link:packages/tsc-diff
       conventional-changelog-conventionalcommits:
         specifier: ^6.1.0
         version: 6.1.0
@@ -4748,6 +4748,7 @@ packages:
   /commander@11.0.0:
     resolution: {integrity: sha512-9HMlXtt/BNoYr8ooyjjNRdIilOTkVJXB+GhxMTtOKwk0R4j4lS4NpjuqmRxroBfnfTSHQIHQB7wryHhXarNjmQ==}
     engines: {node: '>=16'}
+    dev: false
 
   /compare-func@2.0.0:
     resolution: {integrity: sha512-zHig5N+tPWARooBnb0Zx1MFcdfpyJrfTJ3Y5L+IFvUm8rM74hHz66z0gw0x4tijh5CorKkKUCnW82R2vmpeCRA==}
@@ -11275,3 +11276,4 @@ packages:
     hasBin: true
     dependencies:
       commander: 11.0.0
+    dev: false
