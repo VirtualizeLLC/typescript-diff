@@ -40,8 +40,7 @@
   "dependencies": {
     "commander": "^11.0.0",
     "dotenv": "^16.3.1",
-    "tslib": "^2.3.0",
-    "@vllc/tsc-diff": "workspace:0.0.1-beta"
+    "tslib": "^2.3.0"
   },
   "dependenciesMeta": {
     "@vllc/tsc-diff": {
@@ -64,6 +63,8 @@
     "@types/node": "^20.4.5",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
+    "@vllc/tsc-diff": "workspace:0.0.1-beta",
+    "@vllc/eslint-tsc-diff": "workspace:0.0.1-beta",
     "conventional-changelog-conventionalcommits": "^6.1.0",
     "esbuild": "^0.17.17",
     "eslint": "^8.46.0",

@@ -3,7 +3,7 @@
 [![Issues][issues-img]][issues-url]
 [![Code Coverage][codecov-img]][codecov-url]
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
-[![Semantic Release][semantic-release-img]]
+[![Semantic Release[semantic-release-ur]][semantic-release-img]]
 
 A combination of helpful typescript packages that make tools like jest and eslint to behave more efficiently for projects that need to scale.
 
