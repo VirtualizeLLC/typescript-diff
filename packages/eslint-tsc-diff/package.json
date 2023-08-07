@@ -1,13 +1,8 @@
 {
   "name": "@vllc/eslint-tsc-diff",
-  "version": "0.0.1-beta",
+  "version": "1.0.0",
   "bin": {
     "eslint-tsc-diff": "bin/eslint-tsc-diff.js"
-  },
-  "dependencies": {
-    "@vllc/tsc-diff": "0.0.1-beta",
-    "commander": "^11.0.0",
-    "js-yaml": "^4.1.0"
   },
   "keywords": [
     "typescript",
@@ -19,10 +14,16 @@
     "jest",
     "cli"
   ],
+  "private": false,
   "bugs": {
     "url": "https://github.com/VirtualizeLLC/typescript-diff/issues"
   },
   "homepage": "https://github.com/VirtualizeLLC/typescript-diff/tree/main/packages/eslint-tsc-diff#README",
+  "dependencies": {
+    "@vllc/tsc-diff": "1.0.0",
+    "commander": "^11.0.0",
+    "js-yaml": "^4.1.0"
+  },
   "dependenciesMeta": {
     "@vllc/tsc-diff": {
       "injected": true
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@typescript-eslint/parser": "*",
+    "@vllc/tsc-diff": "workspace:*",
     "eslint": "*",
     "yaml": "*"
   }

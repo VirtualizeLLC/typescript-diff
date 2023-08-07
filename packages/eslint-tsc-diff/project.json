@@ -20,6 +20,10 @@
       "command": "node tools/scripts/publish.mjs eslint-tsc-diff {args.ver} {args.tag}",
       "dependsOn": ["build"]
     },
+    "semantic-release": {
+      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "dependsOn": ["build"]
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],

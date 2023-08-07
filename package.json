@@ -14,11 +14,11 @@
     "eslint-diff:upstream": "ts-node -r tsconfig-paths/register ./packages/eslint-tsc-diff/src/cli.ts --upstream",
     "tsc-diff:cli": "npx ts-node ./packages/@tsc-diff/eslint/src/cli.ts",
     "eslint-tsc-diff:cli": "npx ts-node ./packages/@tsc-diff/eslint/src/cli.ts",
-    "setup:globals": "npm i -g pnpm@8.6.10 nx@16.5.5",
+    "setup:globals": "pnpm i -g nx@16.5.5",
     "watch-server": "nodemon --watch 'packages/**/*' -e ts,tsx --exec pnpm run rebuild",
     "prepare": "husky install"
   },
-  "private": false,
+  "private": true,
   "engines": {
     "node": ">=20.0",
     "pnpm": ">=8.6.10"
@@ -48,6 +48,7 @@
     }
   },
   "devDependencies": {
+    "@nx/devkit": "^16.6.0",
     "@nx/esbuild": "16.6.0",
     "@nx/eslint-plugin": "16.5.5",
     "@nx/jest": "16.6.0",
@@ -57,14 +58,15 @@
     "@nx/workspace": "16.5.5",
     "@ryansonshine/commitizen": "^4.2.8",
     "@ryansonshine/cz-conventional-changelog": "^3.3.4",
+    "@theunderscorer/nx-semantic-release": "^2.5.0",
     "@types/eslint": "^8.44.1",
     "@types/jest": "^29.5.3",
     "@types/js-yaml": "^4.0.5",
     "@types/node": "^20.4.5",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
-    "@vllc/tsc-diff": "workspace:0.0.1-beta",
-    "@vllc/eslint-tsc-diff": "workspace:0.0.1-beta",
+    "@vllc/eslint-tsc-diff": "workspace:*",
+    "@vllc/tsc-diff": "workspace:*",
     "conventional-changelog-conventionalcommits": "^6.1.0",
     "esbuild": "^0.17.17",
     "eslint": "^8.46.0",

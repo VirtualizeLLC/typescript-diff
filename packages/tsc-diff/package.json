@@ -1,10 +1,27 @@
 {
   "name": "@vllc/tsc-diff",
-  "version": "0.0.1-beta",
+  "version": "1.0.0",
+  "description": "Outputs diff from staged or upstream changes, has a small cli that works along side it. Must be used alongside other packages to run scripts on the returned files",
   "files": [
     "dist"
   ],
-  "cli": "dist/cli.js",
+  "keywords": [
+    "typescript",
+    "tsc",
+    "git",
+    "diff",
+    "staged",
+    "upstream",
+    "cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/VirtualizeLLC/typescript-diff/issues"
+  },
+  "homepage": "https://github.com/VirtualizeLLC/typescript-diff/tree/main/packages/eslint-tsc-diff#README",
+  "private": false,
+  "bin": {
+    "tsc-diff": "bin/tsc-diff.js"
+  },
   "main": "dist/index.js",
   "dependencies": {
     "commander": "^11.0.0"

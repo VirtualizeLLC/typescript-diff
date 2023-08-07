@@ -11,7 +11,7 @@
 [![Commitizen Friendly][commitizen-img]][commitizen-url]
 [![Semantic Release[semantic-release-ur]][semantic-release-img]]
 
-For more information on other packages go [here]('../../README.md')
+For more information on other packages go [here](https://github.com/VirtualizeLLC/typescript-diff#README)
 
 ## API
 
