@@ -1,7 +1,10 @@
 import { execSync } from 'child_process'
 
 import { ESLint } from 'eslint'
-import { EslintTscDiffConfig } from './types/EslintTscDiffConfig'
+import {
+  EslintScriptRunnerOptions,
+  EslintTscDiffConfig,
+} from './types/EslintTscDiffConfig'
 import { generateTempEslintConfigFile } from './helpers/generateConfig'
 import { execSyncOptions } from './constants/shellConfig'
 import { globalConfigInstance } from './constants/globalConfig'
@@ -30,8 +33,15 @@ export const runEslintFromShell = (
   }
   const scriptArgs = ['eslint', files]
 
-  if (config.eslintScriptRunner) {
+  if (
+    config.eslintScriptRunner &&
+    EslintScriptRunnerOptions[config.eslintScriptRunner]
+  ) {
     scriptArgs.unshift(config.eslintScriptRunner)
+  } else if (config.eslintScriptRunner !== undefined) {
+    throw new Error(
+      `Unsafe runner detected, runner: ${config.eslintScriptRunner}, either disable the runner and install eslint globally or use the supported runners in enum of config.eslintScriptRunner \n\n If this runner needs to be supported please file an issue at "https://github.com/VirtualizeLLC/typescript-diff/issues"`,
+    )
   }
 
   const [major, minor] = ESLint.version.split('.')

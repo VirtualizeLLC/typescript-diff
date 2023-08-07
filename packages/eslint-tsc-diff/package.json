@@ -7,6 +7,20 @@
     "commander": "^11.0.0",
     "js-yaml": "^4.1.0"
   },
+  "keywords": [
+    "typescript",
+    "tsc",
+    "eslint",
+    "diff",
+    "staged",
+    "upstream",
+    "jest",
+    "cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/VirtualizeLLC/typescript-diff/issues"
+  },
+  "homepage": "https://github.com/VirtualizeLLC/typescript-diff/tree/main/packages/eslint-tsc-diff#README",
   "dependenciesMeta": {
     "@vllc/tsc-diff": {
       "injected": true

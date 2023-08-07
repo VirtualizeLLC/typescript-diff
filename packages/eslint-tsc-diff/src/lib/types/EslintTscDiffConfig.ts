@@ -1,6 +1,13 @@
 import { StdioOptions } from 'child_process'
 import { TscDiffConfig } from '@vllc/tsc-diff'
 
+export enum EslintScriptRunnerOptions {
+  NPX = 'npx',
+  PNPX = 'pnpx',
+  YARN = 'yarn',
+  ESLINT = 'eslint',
+}
+
 export interface EslintTscDiffConfig extends TscDiffConfig {
   allowJsonFiles: boolean
   dryRun?: boolean
@@ -19,7 +26,10 @@ export interface EslintTscDiffConfig extends TscDiffConfig {
   tsconfigPath: string // required path to eslint config
   eslintIgnoreFiles: string[]
   eslintIncludeFiles: string[]
-  eslintScriptRunner?: 'npx' | 'pnpx' | 'yarn' | string // losely typed but one of the 3 should be applicable
+  /**
+   * @warning this must be strongly typed in order to prevent malicious usage if the config file or flags are changed to run other scripts.
+   */
+  eslintScriptRunner?: EslintScriptRunnerOptions
   tsconfigIncludeFiles: string[]
   noEslintRc: boolean
 }

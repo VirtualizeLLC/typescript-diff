@@ -2,7 +2,10 @@ import { StdioOptions } from 'child_process'
 import { resolve } from 'path'
 import { readFileSync, readdirSync } from 'fs'
 import { tscDiff } from '@vllc/tsc-diff'
-import { EslintTscDiffConfig } from '../types/EslintTscDiffConfig'
+import {
+  EslintScriptRunnerOptions,
+  EslintTscDiffConfig,
+} from '../types/EslintTscDiffConfig'
 import { getEslintConfigFile } from '../helpers/getEslintConfig'
 
 export const globalConfigDefaults: EslintTscDiffConfig = {
@@ -19,7 +22,7 @@ export const globalConfigDefaults: EslintTscDiffConfig = {
   eslintIncludeFiles: ['.(cjs|mjs|js|jsx|ts|tsx)$'],
   eslintStdio: 'inherit',
   eslintTmpFileName: '.eslintrc-diff.json',
-  eslintScriptRunner: 'npx',
+  eslintScriptRunner: EslintScriptRunnerOptions.NPX,
   files: undefined,
   noEslintRc: false,
   noInlineConfig: false,
@@ -41,7 +44,7 @@ export class GlobalConfig implements EslintTscDiffConfig {
   eslintIncludeFiles: string[]
   eslintStdio: StdioOptions
   eslintTmpFileName: string
-  eslintScriptRunner?: string
+  eslintScriptRunner?: EslintScriptRunnerOptions
   files?: string[]
   noEslintRc: boolean
   noInlineConfig: boolean
