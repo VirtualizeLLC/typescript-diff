@@ -32,9 +32,9 @@
     "jest"
   ],
   "bugs": {
-    "url": "https://github.com/VirtualizeLLC/typescript-utils/issues"
+    "url": "https://github.com/VirtualizeLLC/typescript-diff/issues"
   },
-  "homepage": "https://github.com/VirtualizeLLC/typescript-utils#README",
+  "homepage": "https://github.com/VirtualizeLLC/typescript-diff#README",
   "dependencies": {
     "commander": "^11.0.0",
     "dotenv": "^16.3.1",
