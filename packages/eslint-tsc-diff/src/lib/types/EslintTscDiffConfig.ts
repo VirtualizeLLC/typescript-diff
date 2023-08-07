@@ -5,31 +5,30 @@ export enum EslintScriptRunnerOptions {
   NPX = 'npx',
   PNPX = 'pnpx',
   YARN = 'yarn',
-  ESLINT = 'eslint',
 }
 
 export interface EslintTscDiffConfig extends TscDiffConfig {
   allowJsonFiles: boolean
-  dryRun?: boolean
   configFileDir: string
   configFileName: string
-  eslintConfigPath: string // required path to eslint config
-  eslintTmpFileName: string
+  dryRun?: boolean
   eslintArgs?: string
+  eslintConfigPath: string // required path to eslint config
   eslintFix?: boolean
+  eslintIgnoreFiles: string[]
+  eslintIncludeFiles: string[]
+  /**
+   * @eslintScriptRunner must be strongly typed in order to prevent malicious usage if the config file or flags are changed to run other scripts.
+   */
+  eslintScriptRunner?: EslintScriptRunnerOptions
   eslintStdio?: StdioOptions
+  eslintTmpFileName: string
+  noEslintRc: boolean
   noInlineConfig?: boolean
   projectAsJson?: boolean
   retainTmpFiles?: boolean
   tmpFileDir: string
-  tsconfigTmpFileName: string
-  tsconfigPath: string // required path to eslint config
-  eslintIgnoreFiles: string[]
-  eslintIncludeFiles: string[]
-  /**
-   * @warning this must be strongly typed in order to prevent malicious usage if the config file or flags are changed to run other scripts.
-   */
-  eslintScriptRunner?: EslintScriptRunnerOptions
   tsconfigIncludeFiles: string[]
-  noEslintRc: boolean
+  tsconfigPath: string // required path to eslint config
+  tsconfigTmpFileName: string
 }

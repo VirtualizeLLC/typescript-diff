@@ -34,7 +34,7 @@ export const runEslintFromShell = (
   const scriptArgs = ['eslint', files]
 
   if (
-    config.eslintScriptRunner &&
+    config.eslintScriptRunner !== undefined &&
     EslintScriptRunnerOptions[config.eslintScriptRunner]
   ) {
     scriptArgs.unshift(config.eslintScriptRunner)
