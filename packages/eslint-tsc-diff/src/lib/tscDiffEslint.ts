@@ -1,14 +1,12 @@
 import { execSync } from 'child_process'
 
 import { ESLint } from 'eslint'
-import {
-  EslintScriptRunnerOptions,
-  EslintTscDiffConfig,
-} from './types/EslintTscDiffConfig'
+import { EslintTscDiffConfig } from './types/EslintTscDiffConfig'
 import { generateTempEslintConfigFile } from './helpers/generateConfig'
 import { execSyncOptions } from './constants/shellConfig'
 import { globalConfigInstance } from './constants/globalConfig'
 import { parseEslintFilesToInclude } from './helpers/fileValidation'
+import { validateEslintScriptRunner } from './helpers/validateEslintRunner'
 
 export const argsToRemove = ['--config', '--fix']
 export const argsToRemoveString = argsToRemove.join(' ')
@@ -22,6 +20,7 @@ export const runEslintFromShell = (
   eslintConfigFilePath: string,
   config: EslintTscDiffConfig,
 ) => {
+  validateEslintScriptRunner(config.eslintScriptRunner)
   const filesToInclude = parseEslintFilesToInclude(config)
   const files = filesToInclude.join(' ')
   if (!filesToInclude || files.length === 0) {
@@ -33,15 +32,13 @@ export const runEslintFromShell = (
   }
   const scriptArgs = ['eslint', files]
 
-  if (
-    config.eslintScriptRunner !== undefined &&
-    EslintScriptRunnerOptions[config.eslintScriptRunner]
-  ) {
+  if (config.eslintScriptRunner) {
     scriptArgs.unshift(config.eslintScriptRunner)
-  } else if (config.eslintScriptRunner !== undefined) {
-    throw new Error(
-      `Unsafe runner detected, runner: ${config.eslintScriptRunner}, either disable the runner and install eslint globally or use the supported runners in enum of config.eslintScriptRunner \n\n If this runner needs to be supported please file an issue at "https://github.com/VirtualizeLLC/typescript-diff/issues"`,
-    )
+  } else {
+    config.verbose &&
+      console.log(
+        'No eslint runner detected, will default to running eslint globally which may throw an error',
+      )
   }
 
   const [major, minor] = ESLint.version.split('.')

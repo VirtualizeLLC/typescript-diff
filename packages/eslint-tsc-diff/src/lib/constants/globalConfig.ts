@@ -83,7 +83,7 @@ export class GlobalConfig implements EslintTscDiffConfig {
   /**
    * @todo add something like zod to validate the schema aligns with the EslintTscDiffConfig interface
    */
-  initializeConfig = () => {
+  init = () => {
     const configFile = this.parseConfig()
 
     if (!configFile) {
@@ -106,10 +106,10 @@ export class GlobalConfig implements EslintTscDiffConfig {
     if (!this.eslintConfigPath) {
       this.eslintConfigPath = getEslintConfigFile()
     }
+  }
 
-    if (!config.files && !this.files) {
-      this.files = tscDiff(this)
-    }
+  getStagedFiles() {
+    this.files = tscDiff(this)
   }
 }
 

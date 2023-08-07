@@ -6,7 +6,10 @@ import { cliSharedOptions } from '@vllc/tsc-diff'
 import { argsToRemoveString, tscDiffEslint } from './lib/tscDiffEslint'
 
 import { EslintTscDiffConfig } from './lib/types/EslintTscDiffConfig'
-import { globalConfigInstance } from './lib/constants/globalConfig'
+import {
+  globalConfigDefaults,
+  globalConfigInstance,
+} from './lib/constants/globalConfig'
 import { CLIConfig } from './lib/types/CliConfig'
 
 const program = new Command()
@@ -20,7 +23,7 @@ const getPackageJson = async (): Promise<{ name: string; version: string }> => {
 }
 
 const runCli = async () => {
-  globalConfigInstance.initializeConfig()
+  globalConfigInstance.init()
   const packageJson = await getPackageJson()
 
   cliSharedOptions(program, globalConfigInstance)
@@ -126,9 +129,15 @@ const runCli = async () => {
     )
     .action((config: Partial<EslintTscDiffConfig> & Partial<CLIConfig>) => {
       if (config.printConfig) {
-        return
+        console.log(config)
+        throw new Error('debug print command provided')
+      }
+      if (config.printConfigDefaults) {
+        console.log(globalConfigDefaults)
+        throw new Error('debug print command provided')
       }
       globalConfigInstance.update(config)
+      globalConfigInstance.getStagedFiles()
       tscDiffEslint(globalConfigInstance)
     })
   program.parse(process.argv)
