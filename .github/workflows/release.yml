@@ -29,7 +29,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_AUTOMATION }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpx semantic-release
+        run: pnpm exec nx run-many -t semantic-release
       - name: Upload Code Coverage
         uses: codecov/codecov-action@v3.1.0
         env:

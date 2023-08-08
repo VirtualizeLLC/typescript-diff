@@ -25,9 +25,10 @@ jobs:
       - run: pnpm exec nx run-many -t test --coverage
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_AUTOMATION }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpx semantic-release
+        run: pnpm exec nx run-many -t semantic-release
       - name: Upload Code Coverage
         uses: codecov/codecov-action@v3.1.0
         env:
