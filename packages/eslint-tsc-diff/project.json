@@ -21,7 +21,10 @@
       "dependsOn": ["build"]
     },
     "semantic-release": {
-      "executor": "@theunderscorer/nx-semantic-release:semantic-release",
+      "executor": "nx:run-script",
+      "options": {
+        "script": "semantic-release -e semantic-release-monorepo"
+      },
       "dependsOn": ["build"]
     },
     "lint": {

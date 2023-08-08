@@ -1,7 +1,0 @@
-{
-  "changelog": true,
-  "npm": true,
-  "github": false,
-  "repositoryUrl": "https://github.com/VirtualizeLLC/typescript-diff",
-  "branches": ["main"]
-}
