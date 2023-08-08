@@ -29,7 +29,7 @@
     "semantic-release": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec semantic-release -e semantic-release-monorepo"
+        "command": "cd packages/eslint-tsc-diff; pnpm exec semantic-release -e semantic-release-monorepo"
       },
       "dependsOn": ["build"]
     },
