@@ -21,9 +21,9 @@
       "dependsOn": ["build"]
     },
     "semantic-release": {
-      "executor": "nx:run-script",
+      "executor": "nx:run-commands",
       "options": {
-        "script": "semantic-release -e semantic-release-monorepo"
+        "command": "pnpm exec semantic-release -e semantic-release-monorepo"
       },
       "dependsOn": ["build"]
     },
